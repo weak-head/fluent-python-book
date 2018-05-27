@@ -8,6 +8,7 @@ Card = collections.namedtuple('Card', ['rank', 'suit'])
 class FrenchDeck(object):
     ranks = [str(n) for n in range(2, 11)] + list('JQKA')
     suits = 'clubs diamonds hearts spades'.split()
+    suits_values = dict(spades=3, hearts=2, diamonds=1, clubs=0)
 
     def __init__(self):
         self._cards = [Card(rank, suit) for rank in self.ranks
@@ -18,6 +19,17 @@ class FrenchDeck(object):
 
     def __getitem__(self, position):
         return self._cards[position]
+
+
+def card_rank(card):
+    '''
+    Evaluates card rank based on card suite and value.
+    '''
+
+    rank_value = FrenchDeck.ranks.index(card.rank)
+    total_rank = rank_value * len(FrenchDeck.suits) + FrenchDeck.suits_values[card.suit]
+
+    return total_rank
 
 
 if __name__ == '__main__':
@@ -39,7 +51,8 @@ if __name__ == '__main__':
     for _ in range(4):
         print(choice(deck))
 
-    # and slicing
+    # also we support slicing because
+    # __getitem__ delegates the work to []
     print(deck[:3])
     print(deck[13:18])
 
@@ -54,4 +67,7 @@ if __name__ == '__main__':
     # 'in' operation can rely on sequential scan
     print( Card('Q', 'hearts') in deck )
     print( Card('7', 'stones') in deck )
-    
+
+    # and ordered by custom criteria
+    for card in sorted(deck, key=card_rank):
+        print(card)
