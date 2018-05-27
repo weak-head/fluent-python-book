@@ -15,6 +15,9 @@ class Vector(object):
         return hypot(self.x, self.y)
 
     def __bool__(self):
+        # Or we can avoid the call to __abs__
+        # and implement it like this:
+        #  return bool(self.x or self.y)
         return bool(abs(self))
 
     def __add__(self, other):
