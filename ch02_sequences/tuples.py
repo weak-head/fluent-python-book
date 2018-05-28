@@ -1,4 +1,6 @@
+#!/bin/python
 
+from collections import namedtuple
 
 def tuple_unpacking():
     '''
@@ -60,7 +62,49 @@ def tuple_unpacking():
 
     for name, cc, pop, (latitude, longitude) in metro_areas:
         if longitude <= 0:
-            print(fmt.format(name, latitude, longitude)) 
+            print(fmt.format(name, latitude, longitude))
+
+
+def named_tuples():
+    '''
+    Named tuples are very usefull and easy to use.
+    '''
+
+    # two ways to specify field names for named tuple:
+    #   - string with names
+    #   - enumerable of strings
+    City = namedtuple('City', 'name country population coordinates')
+    Coordinates = namedtuple('Coordinates', 'latitude longitude')
+
+    tokyo = City('Tokyo', 'JP', 36.933, Coordinates(35.689722, 139.691667))
+
+    print(tokyo)
+    print(tokyo.name)
+    print(tokyo.country)
+    print(tokyo.population)
+    print(tokyo.coordinates)
+    print(tokyo.coordinates.latitude)
+    print(tokyo.coordinates.longitude)
+
+    print(tokyo[1])
+
+    # a few special methods are very handy:
+    #  - _make
+    #  - _asdict
+    #  - _fields
+
+    delhi_data = ('Delhi NCR', 'IN', 21.9, Coordinates(28.613242, 77.2083242))
+
+    print(City._fields)
+    delhi = City._make(delhi_data)
+    print(delhi)
+
+    print(delhi._asdict())
+    for key, value in delhi._asdict().items():
+        print(key, ': ', value)
+
 
 if __name__ == '__main__':
     tuple_unpacking()
+
+    named_tuples()
