@@ -43,6 +43,54 @@ def exclude_last_item():
         print('tt -> ', tt)
 
 
+def stride_example():
+    '''
+    Strides could be used to specify a step
+    that is used to slice items from the
+    sequence
+    '''
+
+    some_sequence = 'the sequence to be sliced'
+
+    r = some_sequence[::2]  # gets every seconds character
+    print(r)
+
+    r = some_sequence[::-1]  # every character in opposite order
+    print(r)
+
+    r = some_sequence[::-2]  # every seconds character in opposite order
+    print(r)
+
+
+def stride_for_nice_slicing():
+    '''
+    strides could be used for pretty nice
+    slicing or well structured data
+    '''
+
+    well_structured_data = """
+    0.........10...15........25....
+    John      M    $15.75    34
+    Doe       M    $337.25   18
+    Alice     W    $3.15     372
+    Dona      W    $0.75     91
+    """
+
+    NAME = slice(0, 10)
+    SEX = slice(10, 15)
+    DEBT = slice(15, 25)
+    KARMA = slice(25, 30)
+
+    rows = well_structured_data.split('\n')[2:]
+
+    for record in rows:
+        print('{name:10} - {debt:6}'.format(name=record[NAME], debt=record[DEBT]))
+
+
 if __name__ == '__main__':
 
     exclude_last_item()
+
+    stride_example()
+
+    stride_for_nice_slicing()
