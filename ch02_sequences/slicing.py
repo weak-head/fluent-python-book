@@ -87,6 +87,34 @@ def stride_for_nice_slicing():
         print('{name:10} - {debt:6}'.format(name=record[NAME], debt=record[DEBT]))
 
 
+def assigning_to_slices():
+    '''
+    slices could be used with an 
+    assignment statement or del statement
+    '''
+
+    l = list(range(10))
+    print(l)
+    
+    l[2:5] = [20, 30]
+    print(l)
+
+    del l[5:7]
+    print(l)
+
+    l[3::2] = [11, 22]
+    print(l)
+
+    try:
+        l[2:5] = 100
+    except:
+        print('only sequences could be used during assignment')
+
+    l[2:5] = [100]
+    print(l)
+
+
+
 if __name__ == '__main__':
 
     exclude_last_item()
@@ -94,3 +122,5 @@ if __name__ == '__main__':
     stride_example()
 
     stride_for_nice_slicing()
+
+    assigning_to_slices()
