@@ -41,3 +41,13 @@ def deque_example():
 
 if __name__ == '__main__':
     deque_example()
+
+    # related queues:
+    #  - queue.Queue
+    #  - multiprocessing.Queue
+    #  - multiprocessing.JoinableQueue
+    #  - asyncio.Queue
+    #  - asyncio.LifoQueue
+    #  - asyncio.PriorityQueue
+    #  - asyncio.JoinableQueue
+    #  - heapq -> lists .heappop .heappush
