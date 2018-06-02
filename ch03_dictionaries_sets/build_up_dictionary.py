@@ -37,3 +37,21 @@ print('d:', d)
 
 e = dict({'one': 1, 'two': 2, 'three': 3})
 print('e:', e)
+
+######################################################################
+
+# dictcomps is a great way to build dictionary
+
+PEOPLE = [('Ivan', 44)
+         ,('John', 32)
+         ,('Sam', 32)
+         ,('Michael', 71)
+         ,('Rebecca', 13)
+         ,('Alex', 49)
+         ,('Andy', 22)]
+
+people = {name: age for name, age in PEOPLE if 21 < age < 67}
+print(people)
+
+people_hi = {name.upper(): age for name, age in people.items()}
+print(people_hi)
