@@ -29,5 +29,35 @@ def naive_dict_get():
         print(word, len(index[word]), index[word])
 
 
+def setdefault_dict():
+    '''
+    Pretty much the same example
+    but using the setdefault method
+    of a dict object
+    '''
+
+    import sys
+    import re
+
+    WORD_RE = re.compile(r'\w+')
+
+    index = {}
+
+    with open('handling_missing_keys.py', encoding='utf-8') as fp:
+        for line_no, line in enumerate(fp, 1):
+            for match in WORD_RE.finditer(line):
+                word = match.group()
+                col_no = match.start() + 1
+                location = (line_no, col_no)
+
+                index.setdefault(word, []).append(location)
+
+    for word in sorted(index, key=str.upper):
+        print(word, len(index[word]), index[word])
+
+
 if __name__ == '__main__':
     naive_dict_get()
+
+    print(); print()
+    setdefault_dict()
