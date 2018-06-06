@@ -28,6 +28,23 @@ def ordered_dict():
     print('  ', od.popitem(last=False))
     print('  ', od.popitem(last=False))
 
+def counter_dict():
+    '''
+    Counter accumulates number of occurrences.
+    '''
+
+    import collections
+
+    cnt = collections.Counter('a lazy dog jumped over the quick fox'.replace(' ', ''))
+    print(cnt)
+
+    cnt.update('the dog is not so lazy'.replace(' ', ''))
+    print(cnt)
+
+    # 3 most common letters
+    print(cnt.most_common(3))
+
 ## ---------------------------------------- ##
 
 ordered_dict()
+counter_dict()
