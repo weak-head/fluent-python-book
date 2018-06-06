@@ -44,7 +44,33 @@ def counter_dict():
     # 3 most common letters
     print(cnt.most_common(3))
 
+def chain_map_dict():
+    '''
+    chain map allows us to combine multiples
+    sources of search into one ordered chain
+    '''
+
+    import collections
+
+    local_host = {'alex': True, 'john': False}
+    local_domain_controller = {'mike': False, 'alex': True}
+    global_domain_controller = {'rob': True}
+
+
+    cm = collections.ChainMap(local_host, local_domain_controller, global_domain_controller)
+
+    print('alex', cm['alex'])
+    print('mike', cm['mike'])
+    print('rob', cm['rob'])
+
+    try:
+        print('missing', cm['missing'])
+    except KeyError as ke:
+        print('key not found...')
+        print('KeyError:', ke)
+
 ## ---------------------------------------- ##
 
 ordered_dict()
 counter_dict()
+chain_map_dict()
