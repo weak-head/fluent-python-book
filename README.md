@@ -2,9 +2,7 @@
 
 This repo is a playground that contains a source code related to topics that are discussed in the [Fluent Python](http://shop.oreilly.com/product/0636920032519.do) book.
 
-## Overview
-
-### Sequences and Collections
+## Sequences and Collections
 
 * list comprehensions (listcomps)
 * generator expressions (genexps)
@@ -47,3 +45,31 @@ Mutability:
     * collections.namedtuple
     * str
     * bytes
+
+## Mapping types (Dictionaries and Sets)
+
+* collections.abc
+    * Mapping
+    * MutableMapping
+* dictionary comprehensions (dictcomp)
+
+Variations:
+
+* dict
+* collections.defaultdict
+* collections.OrderedDict
+* collections.ChainMap
+* collections.Counter
+* collections.UserDict
+
+Extension:
+
+* `__missing__`
+* `__contains__`
+* `__getitem__`
+* `__setitem__`
+
+Immutable Proxy:
+
+* types.MappingProxyType
+
