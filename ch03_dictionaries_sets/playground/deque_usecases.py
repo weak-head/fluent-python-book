@@ -9,6 +9,7 @@ def tail_filter():
         numbered = ['{:0>2d} {}'.format(n, s) for n, s in last_five]
         print(''.join(numbered))
 
+
 def moving_average(iterable, n=3):
     it = iter(iterable)
 
@@ -26,7 +27,23 @@ def moving_average(iterable, n=3):
         yield s / n
 
 
+def roundrobin(*iterables):
+    """ roundrobin("ABC", "D", "EF") -> A D E B F C """
+    iterators = deque(map(iter, iterables))
+
+    while iterators:
+        try:
+            while True:
+                yield next(iterators[0])
+                iterators.rotate(-1)
+        except StopIteration:
+            iterators.popleft()
+
 
 if __name__ == '__main__':
     tail_filter()
+
     print(list(moving_average([10, 20, 30, 40, 50, 60, 70])))
+
+    for i in roundrobin("ABC", "D", "EF"):
+        print(i, end=' ')
